@@ -21,6 +21,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
   <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
   <link rel="import" href="../../variables-manager/variables-manager.html">
+  <link rel="import" href="../../paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="../../arc-icons/arc-icons.html">
   <link rel="import" href="../arc-status-bar.html">
 
   <style is="custom-style" include="demo-pages-shared-styles">
@@ -37,21 +39,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <demo-snippet>
       <template>
         <variables-manager></variables-manager>
-        <arc-status-bar message="Demo page!"></arc-status-bar>
+        <arc-status-bar message="Demo page!">
+          <paper-icon-button icon="arc:save" prefix></paper-icon-button>
+          <span class="dirty" prefix></span>
+        </arc-status-bar>
+        <style is="custom-style">
+        .dirty {
+          display: inline-block;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background-color: #8D6E63;
+        }
+        </style>
       </template>
     </demo-snippet>
-
     <h3>With colors</h3>
     <demo-snippet>
       <template>
-        <arc-status-bar message="Demo page!" class="colors"></arc-status-bar>
+        <arc-status-bar class="colors">
+          <span class="message" prefix>Demo page!</span>
+        </arc-status-bar>
         <style is="custom-style">
           .colors {
             --arc-status-bar-background-color: #795548;
-            --arc-status-bar-message-color: #FAFAFA;
             --arc-status-bar-environment-color: rgba(250, 250, 250, 0.74);
             --paper-input-container-focus-color: rgba(255, 255, 255, 0.54);
             --paper-input-container-color: rgba(255, 255, 255, 0.24);
+          }
+          .message {
+            color: #fff;
           }
         </style>
       </template>

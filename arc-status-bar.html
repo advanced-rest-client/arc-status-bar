@@ -30,10 +30,7 @@ Custom property | Description | Default
 ----------------|-------------|----------
 `--arc-status-bar` | Mixin applied to the element | `{}`
 `--arc-status-bar-background-color` | Background color of the element. | `#eee`
-`--arc-status-bar-message-color` | Color of the message on status bar | `rgba(0, 0, 0, 0.54)`
 `--arc-status-bar-environment-color` | Color of the environment selector section font color | `{}`
-`--arc-status-bar-message-color` | Color of the status message | `{}`
-`--arc-status-bar-message` | Mixin applied to the status message. | `{}`
 `--arc-status-bar-env-selector-max-width` | Max width of the environment selector | `120px`
 
 @group UI Elements
@@ -57,11 +54,8 @@ Custom property | Description | Default
       --paper-input-container-input-color: var(--arc-status-bar-env-forecolor);
     }
 
-    .status-message {
+    .spacer {
       @apply --layout-flex;
-      color: var(--arc-status-bar-message-color);
-
-      @apply --arc-status-bar-message;
     }
 
     .env-info {
@@ -74,10 +68,21 @@ Custom property | Description | Default
       margin-left: 8px;
       max-width: var(--arc-status-bar-env-selector-max-width, 120px);
     }
-    </style>
-    <div class="status-message">[[message]]</div>
-    <div class="env-info"><span class="env-label" hidden$="[[narrow]]">Selected environment: </span><environment-selector no-label-float></environment-selector></div>
 
+    .content {
+      @apply --layout-horizontal;
+      @apply --layout-center;
+    }
+
+    .content ::content > * {
+      @apply --layout-center;
+    }
+    </style>
+    <div class="content">
+      <content select="[prefix]"></content>
+    </div>
+    <div class="spacer"></div>
+    <div class="env-info"><span class="env-label" hidden$="[[narrow]]">Selected environment: </span><environment-selector no-label-float></environment-selector></div>
     <iron-media-query query="(max-width: 480px)" query-matches="{{narrow}}"></iron-media-query>
   </template>
   <script>
