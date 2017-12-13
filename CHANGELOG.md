@@ -1,3 +1,13 @@
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/advanced-rest-client/arc-status-bar/compare/0.2.1...0.2.2) (2017-12-13)
+
+
+### New
+
+* Added variables-preview-overlay element. ([516333444a57916cce38ad6904ab18f3d9ce775c](https://github.com/advanced-rest-client/arc-status-bar/commit/516333444a57916cce38ad6904ab18f3d9ce775c))
+
+
+
 <a name="0.2.1"></a>
 ## 0.2.1 (2017-10-11)
 
