@@ -14,6 +14,9 @@ the License.
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../environment-selector/environment-selector.html">
 <link rel="import" href="../iron-media-query/iron-media-query.html">
+<link rel="import" href="../variables-preview-overlay/variables-preview-overlay.html">
+<link rel="import" href="../arc-icons/arc-icons.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
 
 <!--
 A status bar for the Advanced REST Client's request panel
@@ -77,12 +80,21 @@ Custom property | Description | Default
     .content ::content > * {
       @apply --layout-center;
     }
+
+    .env-info {
+      background-color: inherit;
+    }
     </style>
     <div class="content">
       <content select="[prefix]"></content>
     </div>
     <div class="spacer"></div>
-    <div class="env-info"><span class="env-label" hidden$="[[narrow]]">Selected environment: </span><environment-selector no-label-float></environment-selector></div>
+    <div class="env-info">
+      <span class="env-label" hidden$="[[narrow]]">Selected environment: </span>
+      <environment-selector no-label-float></environment-selector>
+      <variables-preview-overlay position-target="[[_variablesButton]]" dynamic-align horizontal-align="auto" vertical-align="auto"></variables-preview-overlay>
+      <paper-icon-button class="var-info-button" icon="arc:info-outline" title="Open variables list" on-tap="_openVariablesList"></paper-icon-button>
+    </div>
     <iron-media-query query="(max-width: 480px)" query-matches="{{narrow}}"></iron-media-query>
   </template>
   <script>
@@ -96,7 +108,18 @@ Custom property | Description | Default
       /**
        * Renders mobile friendly view
        */
-      narrow: Boolean
+      narrow: Boolean,
+      // Positioning target for the `variables-preview-overlay`
+      _variablesButton: {
+        type: HTMLElement,
+        value: function() {
+          return this.$$('.var-info-button');
+        }
+      }
+    },
+
+    _openVariablesList: function() {
+      this.$$('variables-preview-overlay').opened = true;
     }
   });
   </script>

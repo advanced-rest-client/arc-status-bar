@@ -17,8 +17,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <script src="../../web-component-tester/browser.js"></script>
     <script src="../../iron-test-helpers/test-helpers.js"></script>
     <script src="../../iron-test-helpers/mock-interactions.js"></script>
-
-    <!-- Step 1: import the element to test -->
     <link rel="import" href="../arc-status-bar.html">
   </head>
   <body>
@@ -30,15 +28,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </test-fixture>
 
     <script>
-    /* global suite, test, fixture, assert */
+    /* global suite, test, fixture, assert, MockInteractions */
     suite('basic', function() {
       var element;
       setup(function() {
         element = fixture('basic');
       });
       // There's literally nothing to test here.
-      test('`arc-status-bar` should be initialized', function() {
-        assert.equal(element.isAttached, true, 'element.isAttached equals true');
+      test('position target for variables overlay is set', function() {
+        assert.ok(element._variablesButton);
+      });
+
+      test('Opens variables overlay', function() {
+        MockInteractions.tap(element._variablesButton);
+        var overlay = element.$$('variables-preview-overlay');
+        assert.isTrue(overlay.opened);
       });
     });
     </script>
