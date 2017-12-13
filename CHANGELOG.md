@@ -1,3 +1,13 @@
+<a name="0.2.4"></a>
+## [0.2.4](https://github.com/advanced-rest-client/arc-status-bar/compare/0.2.3...0.2.4) (2017-12-13)
+
+
+### Update
+
+* Added vertical offset to the variables overlay ([533b11a5cd949143dc3aa1ef2eb71e91a2d65b0a](https://github.com/advanced-rest-client/arc-status-bar/commit/533b11a5cd949143dc3aa1ef2eb71e91a2d65b0a))
+
+
+
 <a name="0.2.3"></a>
 ## [0.2.3](https://github.com/advanced-rest-client/arc-status-bar/compare/0.2.2...0.2.3) (2017-12-13)
 
