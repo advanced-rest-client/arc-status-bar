@@ -84,6 +84,11 @@ Custom property | Description | Default
     .env-info {
       background-color: inherit;
     }
+
+    .var-panel {
+      max-width: calc(100vw - var(--app-drawer-width, 0) - 32px);
+      max-height: calc(100vh - 105px - 32px);
+    }
     </style>
     <div class="content">
       <content select="[prefix]"></content>
@@ -92,9 +97,9 @@ Custom property | Description | Default
     <div class="env-info">
       <span class="env-label" hidden$="[[narrow]]">Selected environment: </span>
       <environment-selector no-label-float></environment-selector>
-      <variables-preview-overlay position-target="[[_variablesButton]]" dynamic-align horizontal-align="auto" vertical-align="auto" vertical-offset="44"></variables-preview-overlay>
       <paper-icon-button class="var-info-button" icon="arc:info-outline" title="Open variables list" on-tap="_openVariablesList"></paper-icon-button>
     </div>
+    <variables-preview-overlay class="var-panel" position-target="[[_variablesButton]]" dynamic-align horizontal-align="auto" vertical-align="auto" vertical-offset="44"></variables-preview-overlay>
     <iron-media-query query="(max-width: 480px)" query-matches="{{narrow}}"></iron-media-query>
   </template>
   <script>
